@@ -1,12 +1,31 @@
 :root {
-    --primary: #4F46E5;
-    --primary-light: #6366F1;
-    --success: #10B981;
-    --danger: #EF4444;
-    --text: #ffffff;
-    --text-dark: #111827;
-    --glass: rgba(255, 255, 255, .12);
-    --glass-border: rgba(255, 255, 255, .2);
-    --radius: 22px;
-    --shadow: 0 20px 45px rgba(0, 0, 0, .18);
+    --primary: #6366f1;
+    --primary-light: #818cf8;
+    --primary-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+    --card-accent-gradient: linear-gradient(135deg, #4f46e5 0%, #7c3aed 60%, #c084fc 100%);
+
+    --success: #10b981;
+    --success-bg: rgba(16, 185, 129, 0.12);
+    --success-glow: rgba(16, 185, 129, 0.25);
+
+    --danger: #f43f5e;
+    --danger-bg: rgba(244, 63, 94, 0.12);
+    --danger-glow: rgba(244, 63, 94, 0.25);
+
+    --text: #f8fafc;
+    --text-sub: #cbd5e1;
+    --text-muted: #64748b;
+
+    --bg-main: #07090e;
+    --glass: rgba(15, 23, 42, 0.65);
+    --glass-card: rgba(17, 24, 39, 0.75);
+    --glass-hover: rgba(30, 41, 59, 0.85);
+    --glass-border: rgba(255, 255, 255, 0.08);
+
+    --radius-lg: 24px;
+    --radius-md: 16px;
+    --radius-sm: 10px;
+
+    --shadow-glow: 0 20px 40px -15px rgba(99, 102, 241, 0.35);
+    --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
 }

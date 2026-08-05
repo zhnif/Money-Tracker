@@ -1,31 +1,188 @@
-@media(max-width:900px) {
-
-    .summary {
-
+/* ==========================================================================
+   DESKTOP / TABLET (Grid Split)
+   ========================================================================== */
+@media (max-width: 1023px) {
+    .main-content {
         grid-template-columns: 1fr;
-
     }
-
 }
 
-@media(max-width:600px) {
-
+/* ==========================================================================
+   TABLET RESPONSIVE (< 768px)
+   ========================================================================== */
+@media (max-width: 767px) {
     body {
+        padding: 16px 12px;
+    }
 
-        padding: 18px;
-
+    .header {
+        margin-bottom: 16px;
+        text-align: center;
     }
 
     .header h1 {
-
-        font-size: 30px;
-
+        font-size: 1.6rem;
     }
 
-    .card h2 {
-
-        font-size: 28px;
-
+    .summary {
+        grid-template-columns: 1fr;
+        gap: 12px;
     }
 
+    /* M-Banking Card Style untuk Total Saldo */
+    .summary .card:first-child {
+        padding: 24px 20px;
+        border-radius: 20px;
+        background: linear-gradient(135deg, #3730a3 0%, #581c87 100%);
+    }
+
+    .summary .card:first-child h3 {
+        font-size: 0.72rem;
+        letter-spacing: 0.1em;
+    }
+
+    .summary .card:first-child h2 {
+        font-size: 2.1rem;
+        margin-top: 6px;
+    }
+
+    /* Income & Expense bersebelahan rapi ala M-Banking */
+    .summary {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .summary .card:first-child {
+        grid-column: 1 / -1;
+        /* Total Saldo Selebar Atas */
+    }
+
+    .summary .card {
+        padding: 16px;
+        border-radius: 16px;
+    }
+
+    .summary .card h3 {
+        font-size: 0.68rem;
+    }
+
+    .summary .card h2 {
+        font-size: 1.25rem;
+        margin-top: 4px;
+    }
+
+    .chart-card {
+        padding: 16px;
+        border-radius: 20px;
+    }
+
+    .chart-container {
+        height: 240px;
+    }
+
+    .history-toolbar {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .history-toolbar select {
+        width: 100%;
+    }
+}
+
+/* ==========================================================================
+   MOBILE BANKING APP EXPERIENCE (< 480px)
+   ========================================================================== */
+@media (max-width: 480px) {
+    body {
+        padding: 12px 10px 40px 10px;
+    }
+
+    .card,
+    .form-card,
+    .history {
+        padding: 16px;
+        border-radius: 20px;
+    }
+
+    /* M-Banking Item List Layout */
+    .transaction {
+        padding: 12px 14px;
+        border-radius: 14px;
+        background: rgba(15, 23, 42, 0.5);
+        align-items: stretch;
+    }
+
+    .transaction-left {
+        gap: 2px;
+    }
+
+    .transaction-left h3 {
+        font-size: 0.9rem;
+        font-weight: 600;
+    }
+
+    .transaction-left p {
+        font-size: 0.72rem;
+        gap: 6px;
+    }
+
+    .badge {
+        font-size: 0.62rem;
+        padding: 1px 6px;
+    }
+
+    .transaction-right {
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: center;
+        gap: 6px;
+    }
+
+    .plus, .minus {
+        font-size: 0.92rem;
+        font-weight: 800;
+    }
+
+    .transaction-actions {
+        gap: 4px;
+    }
+
+    .delete-btn, .edit-btn {
+        padding: 4px 8px;
+        font-size: 0.7rem;
+        border-radius: 6px;
+    }
+
+    /* Form Input ala M-Banking */
+    form {
+        gap: 10px;
+    }
+
+    input, select {
+        padding: 11px 14px;
+        font-size: 0.88rem;
+        border-radius: 12px;
+    }
+
+    button[type="submit"] {
+        padding: 13px;
+        font-size: 0.9rem;
+        border-radius: 12px;
+    }
+
+    #toast {
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+        text-align: center;
+        font-size: 0.85rem;
+        border-radius: 12px;
+    }
+
+    /* Tambahkan style ini di bagian bawah media query max-width 480px */
+    #transactionList {
+        max-height: 350px;
+        /* Batas tinggi yang sedikit lebih pendek di HP */
+    }
 }

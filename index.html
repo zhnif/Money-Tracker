@@ -4,20 +4,32 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Money Tracker</title>
+
+        <!-- Google fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+            rel="stylesheet">
+
+        <!-- CSS -->
         <link rel="stylesheet" href="./css/variables.css">
         <link rel="stylesheet" href="./css/style.css">
         <link rel="stylesheet" href="./css/responsive.css">
+
+        <!-- Chart.js CDN -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     </head>
 
     <body>
         <div class="container">
             <header class="header">
-                <h1>💰 Money Tracker</h1>
+                <h1>Money Tracker</h1>
                 <p>Kelola keuanganmu dengan lebih mudah, cepat, dan modern</p>
             </header>
 
+            <!-- Card Summary Top -->
             <section class="summary">
-
                 <div class="card">
                     <h3>Total Saldo</h3>
                     <h2 id="balance">Rp0</h2>
@@ -34,90 +46,97 @@
                 </div>
             </section>
 
-            <section class="form-card">
-                <h2>Tambah Transaksi</h2>
-                <form id="transactionForm">
-                    <div class="input-group">
-                        <label>Judul</label>
-                        <input
-                            type="text"
-                            id="title"
-                            placeholder="Contoh: Gaji Bulanan">
+            <!-- Card Chart -->
+            <section class="statistics">
+                <div class="card chart-card">
+                    <div class="chart-header">
+                        <h3>Visualisasi & Analisis Keuangan</h3>
                     </div>
-
-                    <div class="input-group">
-                        <label>Nominal</label>
-                        <input
-                            type="text"
-                            id="amount"
-                            placeholder="0"
-                            autocomplete="off">
+                    <div class="chart-body">
+                        <div class="chart-container">
+                            <canvas id="financeChart"></canvas>
+                        </div>
                     </div>
+                </div>
+            </section>
 
-                    <div class="input-group">
-                        <label>Jenis</label>
-                        <select id="type">
+            <!-- Section Utama (Form & History) -->
+            <div class="main-content">
+                <section class="form-card">
+                    <h2>Tambah Transaksi</h2>
+                    <form id="transactionForm">
+                        <div class="input-group">
+                            <label>Judul</label>
+                            <input type="text" id="title"
+                                placeholder="Contoh: Gaji Bulanan">
+                        </div>
+
+                        <div class="input-group">
+                            <label>Nominal</label>
+                            <input type="text" id="amount" placeholder="0"
+                                autocomplete="off">
+                        </div>
+
+                        <div class="input-group">
+                            <label>Jenis</label>
+                            <select id="type">
+                                <option value="income">Pemasukan</option>
+                                <option value="expense">Pengeluaran</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Kategori</label>
+                            <select id="category">
+                                <option>Makanan</option>
+                                <option>Transportasi</option>
+                                <option>Belanja</option>
+                                <option>Gaji</option>
+                                <option>Tagihan</option>
+                                <option>Hiburan</option>
+                                <option>Lainnya</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Tanggal</label>
+                            <input type="date" id="date">
+                        </div>
+
+                        <button type="submit">➕ Tambah Transaksi</button>
+                    </form>
+                </section>
+
+                <section class="history">
+                    <h2>Riwayat Transaksi</h2>
+                    <div class="history-toolbar">
+                        <input type="text" id="search"
+                            placeholder="🔍 Cari transaksi...">
+                        <select id="filter">
+                            <option value="all">Semua</option>
                             <option value="income">Pemasukan</option>
-
                             <option value="expense">Pengeluaran</option>
                         </select>
                     </div>
 
-                    <div class="input-group">
-                        <label>Kategori</label>
-                        <select id="category">
-                            <option>Makanan</option>
-                            <option>Transportasi</option>
-                            <option>Belanja</option>
-                            <option>Gaji</option>
-                            <option>Tagihan</option>
-                            <option>Hiburan</option>
-                            <option>Lainnya</option>
-                        </select>
+                    <div id="transactionList">
+                        <p class="empty">Belum ada transaksi.</p>
                     </div>
-
-                    <div class="input-group">
-                        <label>Tanggal</label>
-                        <input
-                            type="date"
-                            id="date">
-                    </div>
-
-                    <button type="submit">
-                        ➕ Tambah Transaksi
-                    </button>
-                </form>
-            </section>
-
-            <section class="history">
-                <h2>Riwayat Transaksi</h2>
-                <div class="history-toolbar">
-                    <input
-                        type="text"
-                        id="search"
-                        placeholder="🔍 Cari transaksi...">
-                    <select id="filter">
-                        <option value="all">Semua</option>
-                        <option value="income">Pemasukan</option>
-                        <option value="expense">Pengeluaran</option>
-                    </select>
-                </div>
-
-                <div id="transactionList">
-                    <p class="empty">
-                        Belum ada transaksi.
-                    </p>
-                </div>
-            </section>
+                </section>
+            </div>
         </div>
 
-        <div id="toast">
+        <div id="toast"></div>
 
-        </div>
-
+        <script src="./js/dom.js"></script>
         <script src="./js/storage.js"></script>
         <script src="./js/transaction.js"></script>
         <script src="./js/ui.js"></script>
+        <script src="./js/statistics.js"></script>
+        <script src="./js/dashboard.js"></script>
+        <script src="./js/utils/formatter.js"></script>
+        <script src="./js/utils/validator.js"></script>
+        <script src="./js/chart.js"></script>
         <script src="./js/app.js"></script>
     </body>
 </html>
