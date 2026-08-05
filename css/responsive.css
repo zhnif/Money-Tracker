@@ -1,0 +1,31 @@
+@media(max-width:900px) {
+
+    .summary {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+@media(max-width:600px) {
+
+    body {
+
+        padding: 18px;
+
+    }
+
+    .header h1 {
+
+        font-size: 30px;
+
+    }
+
+    .card h2 {
+
+        font-size: 28px;
+
+    }
+
+}
